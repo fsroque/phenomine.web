@@ -26,6 +26,7 @@ setup(name='omimine.web',
                         'zope.fanstatic',
                         'grokcore.startup',
                         # Add extra requirements here
+                        'suds',
                         ],
       entry_points={
           'fanstatic.libraries': [
