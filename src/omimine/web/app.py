@@ -1,4 +1,5 @@
 import grok
+import zope.interface
 from zope.session.interfaces import ISession
 
 import suds.client
@@ -11,6 +12,10 @@ class Omimine(grok.Application, grok.Container):
     pass
 
 
+class Omiminemacro(grok.View):
+    # Macropage
+    grok.context(zope.interface.Interface)
+
 class Index(grok.View):
     grok.context(Omimine)
     grok.name('index')
@@ -18,54 +23,61 @@ class Index(grok.View):
         resource.style.need()
     
     @property
-    def sessionData(self):
-        return ISession(self.request)
+    def filters(self):
+        return ISession(self.request)['filters']
+    
+    @property
+    def result(self):
+        return ISession(self.request)['result']
     
     def searchForm(self):
         form = SearchForm(self.context, self.request)
-        phenotypes = self.request.get("phenotypes")
-        search = self.request.get("search")
-        
+        phenotypes = self.request.get("form.phenotypes")
         if phenotypes is not None and phenotypes != '':
-            form.sessionData['phenotypes'] = phenotypes
-        if search is not None and search != '':
-            form.sessionData['search'] = search
-        
-        if (phenotypes is not None and phenotypes != '') and (search is not None and search != ''):
+            form.filters['phenotypes'] = phenotypes
             form.doSearch()
         
         return form()
 
 def validateForm(form, action, data):
     form.validate(action, data)
-    pass
+    
+    err_msg = []
+    if not data.has_key('phenotypes'):
+        err_msg.append('phenotypes filter not provided')
+    elif  data['phenotypes'] is None or data['phenotypes'] == '':
+        err_msg.append('phenotypes filter not provided')
+        
+    return err_msg
 
 class SearchForm(grok.Form):
     grok.context(Omimine)
     """Front page search form"""
     template = grok.PageTemplateFile('forms/search.pt')
-    # form_fields = grok.AutoFields(ISearch)
+    form_fields = grok.AutoFields(ISearch)
     
     @property
-    def sessionData(self):
-        return ISession(self.request)['session']
+    def filters(self):
+        return ISession(self.request)['filters']
+    
+    @property
+    def result(self):
+        return ISession(self.request)['result']
         
     def doSearch(self):
-        """docstring for doSearch"""
-        pass
-    
+        self.result['omimine'] = self.filters['phenotypes']
+
+    @grok.action('Clear', validator=None, name="clearHome")
+    def clear(self, **data):
+        if self.filters.has_key('phenotypes'):
+            del(self.filters['phenotypes'])
+        if self.result.has_key('omimine'):
+            del(self.result['omimine'])
+        
     @grok.action('Search OMIM', validator=validateForm, name="searchHome")
     def searchOMIM(self, **data):
-        try:
-            self.sessionData['phenotypes'] = data['phenotypes']
-        except:
-            self.sessionData['phenotypes'] = ''
-            
-        try:
-            self.sessionData['search'] = data['search']
-        except:
-            self.sessionData['search'] = ''
-        
+        phenotypes = data['phenotypes'] 
+        self.filters['phenotypes'] = phenotypes
         self.doSearch()
         # search = Search()
         # self.applyData(search,**data)
@@ -92,7 +104,10 @@ class SearchForm(grok.Form):
         pass
     
     def getPhenotypeInput(self):
-        return self.sessionData['phenotypes']
+        if self.filters.has_key('phenotypes'):
+            return self.filters['phenotypes']
+        else:
+            return ''
     
     def getSearchInput(self):
         return self.sessionData['search']

@@ -1,10 +1,11 @@
-<html>
+<html metal:use-macro="context/@@omiminemacro/macros/standard">
 <head>
 </head>
 <body>
-	<h1 id="">Welcome to OMIMine</h1>
-
-<div tal:replace="structure view/searchForm" />
-
+	<metal:block fill-slot="content">
+		<h1 id="">Welcome to OMIMine</h1>
+	
+	<div tal:replace="structure view/searchForm" />
+	</metal:block>
 </body>
 </html>

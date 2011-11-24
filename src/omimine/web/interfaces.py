@@ -10,7 +10,7 @@ class ISearch(interface.Interface):
         A list of phenotypes to be used when searching the OMIM database,
         one line per search term. Exact match only.
         """,
-        required = True
+        required = False
     )
     
     search = schema.Choice(
