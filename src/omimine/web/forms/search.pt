@@ -14,18 +14,22 @@
 				List of phenotypes for searching:
 			</td>
 			<td >
-				<input type="text"  name="form.phenotypes" id="form.phenotypes" class="textType" tal:attributes="value view/getPhenotypeInput" style="width:250px">
+				<input type="text"  name="form.phenotypes" id="form.phenotypes" class="textType" tal:attributes="value python: view.getPhenotypeInput()" style="width:250px">
+				<!--
+				<input type="text"  name="form.phenotypes" id="form.phenotypes" class="textType"  style="width:250px">
+				-->
 			</td>
 		</tr>
 		
 	</table>
 
-	
   <div id="actionsView">
     <span class="actionButtons">
     	<input tal:replace="structure python: view.actions['form.actions.searchHome'].render()" />
+    	<input tal:replace="structure python: view.actions['form.actions.clearHome'].render()" />
     </span>
   </div>
+ 
   
    <div class="form-status"
         tal:define="status view/status"
@@ -37,6 +41,17 @@
 			   tal:content="python: view.errors[0]" />
 		</div>
   </div>
+  
+  <hr /> 
+ <div tal:condition="python: True"> 
+ 	Option 1
+ 
+ </div> 
+ 
+ <div tal:condition="python: False"> 
+	 Opthion 2
+ 
+ </div> 
   
   
 </form>
