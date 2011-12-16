@@ -1,7 +1,11 @@
-from zope import interface
+from zope.interface import Interface, implements
 from zope import schema
 
-class ISearch(interface.Interface):
+import suds.client
+
+from omimine.web import config
+
+class ISearch(Interface):
     """Main search form"""
     
     phenotypes = schema.Text(
@@ -23,3 +27,41 @@ class ISearch(interface.Interface):
         required = True
     )
         
+class IOmimineWebService(Interface):
+    """Class to interface the OMIMine Web Service"""
+    pass
+    
+
+class OmimineWebService(object):
+    implements(IOmimineWebService)
+
+    def __init__(self):
+        self.client = suds.client.Client(config.wsdl, cache=None)
+        
+    def _runService(self,phenotype_list,search_option):
+        return self.client.service.Run(phenotype_list,search_option)
+    
+    def getVersion(self):
+        return self.client.service.Version()
+        
+    def getGeneList(self,phenotypes,search_option):
+        # import pdb;pdb.set_trace()
+        if search_option == 'no':
+           search_option='false' 
+        phenotype_list = phenotypes.split('\n')
+        web_results = self._runService(phenotype_list,search_option)
+        results = []
+        if len(web_results.geneList) > 0:
+            for item in web_results.geneList.gene:
+                res = dict()
+                res['phenotype'] = item['phenotype']
+                res['matched_morbid'] = item['matched_morbid']
+                res['ensembl'] = item['ensembl']
+                res['hgnc'] = item['hgnc']
+                res['mim'] = item['mim']
+                if search_option != 'false' and item['matched_snippet'] is not None:
+                    res['match'] = item['matched_snippet']
+                else:
+                    res['match'] = ''
+                results.append(res)
+        return (results, web_results.outputFileURI)

@@ -6,11 +6,27 @@
 	<title>Omimine</title>
 </head>
 <body>
-	<h3> header from macro template
-	</h3>
-	<div id="main">
-		<metal:block define-slot="content">
-		</metal:block>
+	<div id="container" class="container">
+		<div id="header" class="span-24">
+			
+		</div>
+		<div id="main" class="span-24">
+			<metal:block define-slot="content">
+			</metal:block>
+		</div>
+		<div id="footer" class="span-16 prepend-5 append-3 small bottom">
+		  <p>
+			<strong>OMIM&reg;</strong> and <strong>Online Mendelian Inheritance in Man&reg;</strong> are registered trademarks of the Johns Hopkins University.
+      <br />
+      				&copy; 2011 
+      				<strong>
+      				     <a href="http://cbu.uib.no" target="new">CBU</a>,
+      				     <a href="http://www.computing.uni.no" target="new">Uni Computing</a>, 
+      				     <a href="http://www.uni.no" target="new">Uni Research</a>
+      				</strong>
+      </p>
+		</div>
+	
 	</div>
 </body>
 </html>
