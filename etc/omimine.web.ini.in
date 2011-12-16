@@ -1,2 +1,3 @@
 [omimine]
-WSDL=http://localhost/~chico/omimine.wsdl
+# WSDL=http://localhost/~chico/omimine.wsdl
+WSDL=http://www.ii.uib.no/~fro061/webservices/omimine_test.wsdl
