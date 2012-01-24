@@ -4,8 +4,9 @@ body {
 }
 
 textarea {
-    width: 200px;
-    height: 100px;
+    width: 180px;
+    height: 80px;
+    overflow: auto;
 }
 
 a[href$='omimine_report.txt'] {
@@ -32,4 +33,20 @@ span.ine {
     font-weight: bold;
     letter-spacing: 2pt;
     word-spacing: 0pt;
+}
+
+span.match {
+    font-weight: bold;
+}
+
+.logo #logo {
+    display: block;
+    margin-top: 1em;
+}
+#main {
+    margin-top: 1em;
+}
+
+.mining {
+    margin-top: 50px;
 }
