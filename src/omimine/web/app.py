@@ -129,12 +129,11 @@ class SearchForm(grok.Form):
         m = re.search('OMIM updated: (\d\d\d\d-\d\d-\d\d)', last_update)
         return time.strftime('%d %B %Y',time.strptime(m.group(1),'%Y-%m-%d'))
         
-        
     def returnMorbid(self, morbid):
         """returns the morbid info, hyperlinking the entry if applicable"""
         m = re.search(', (\d+) \(',morbid)
         if m:
-            return re.sub(m.group(1),'<a href="http://www.omim.org/entry/%s">%s</a>' % (m.group(1),m.group(1)),morbid)
+            return re.sub(m.group(1),'<a href="http://www.omim.org/entry/%s" target="_blank">%s</a>' % (m.group(1),m.group(1)),morbid)
         else:
             return morbid
     

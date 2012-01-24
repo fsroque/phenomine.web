@@ -3,7 +3,7 @@ Do a functional doctest test on the app.
 
 Let's first create an instance of Omim.web at the top level:
 
-    >>> from omimine.web.app import Omim
+    >>> from omimine.web.app import Omimine
     >>> root = getRootFolder()
     >>> root['app'] = Omimine()
 

@@ -1,10 +1,10 @@
 <configure
    xmlns="http://namespaces.zope.org/zope"
-   i18n_domain="omim.web"
-   package="omim.web"
+   i18n_domain="omimine.web"
+   package="omimine.web"
    >
 
-  <include package="omim.web" />
+  <include package="omimine.web" />
 
   <!-- Typical functional testing security setup -->
   <securityPolicy
