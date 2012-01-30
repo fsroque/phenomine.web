@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 version = '0.1'
 
-setup(name='omimine.web',
+setup(name='phenomine.web',
       version=version,
       description="",
       long_description="""\
@@ -16,7 +16,7 @@ setup(name='omimine.web',
       license="",
       package_dir={'': 'src'},
       packages=find_packages('src'),
-      namespace_packages=['omimine',],
+      namespace_packages=['phenomine',],
       include_package_data=True,
       zip_safe=False,
       install_requires=['setuptools',
@@ -32,6 +32,6 @@ setup(name='omimine.web',
                         ],
       entry_points={
           'fanstatic.libraries': [
-              'omimine.web = omimine.web.resource:library',
+              'phenomine.web = phenomine.web.resource:library',
           ]
       })
