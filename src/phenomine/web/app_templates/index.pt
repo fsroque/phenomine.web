@@ -1,0 +1,7 @@
+<html metal:use-macro="context/@@phenominemacro/macros/standard">
+<body>
+	<metal:block fill-slot="content">
+		<div tal:replace="structure view/searchForm" />
+	</metal:block>
+</body>
+</html>
