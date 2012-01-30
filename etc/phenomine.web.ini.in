@@ -1,0 +1,3 @@
+[phenomine]
+WSDL=http://localhost/~chico/phenomine.wsdl
+# WSDL=http://www.ii.uib.no/~fro061/webservices/phenomine_test.wsdl

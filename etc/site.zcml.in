@@ -1,9 +1,9 @@
 <configure xmlns="http://namespaces.zope.org/zope"
-           i18n_domain="omimine.web">
+           i18n_domain="phenomine.web">
 
-  <include package="omimine.web" />
+  <include package="phenomine.web" />
 
-    <configure i18n_domain="omimine.web">
+    <configure i18n_domain="phenomine.web">
 
       <unauthenticatedPrincipal id="zope.anybody"
                                 title="Unauthenticated User" />
