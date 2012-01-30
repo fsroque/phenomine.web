@@ -1,0 +1,42 @@
+Do a functional doctest test on the app.
+========================================
+
+Let's first create an instance of Omim.web at the top level:
+
+    >>> from phenomine.web.app import Phenomine
+    >>> root = getRootFolder()
+    >>> root['app'] = Phenomine()
+
+Run tests in the testbrowser
+----------------------------
+
+The zope.testbrowser.browser module exposes a Browser class that
+simulates a web browser similar to Mozilla Firefox or IE.  We use that
+to test how our application behaves in a browser.  For more
+information, see http://pypi.python.org/pypi/zope.testbrowser.
+
+Create a browser and visit the instance you just created:
+
+    >>> from zope.app.wsgi.testlayer import Browser
+    >>> browser = Browser()
+    >>> browser.open('http://localhost/app')
+
+Check some basic information about the page you visit:
+
+    >>> browser.url
+    'http://localhost/app'
+
+    >>> print browser.contents
+    <html>
+    <head>
+    <link rel="stylesheet" type="text/css" href="http://localhost/fanstatic/phenomine.web/style.css" />
+    <base href="http://localhost/app/@@index" />
+    </head>
+    <body>
+      <h1>Congratulations!</h1>
+      <p>Your Grok application is up and running.
+      Edit <code>phenomine/web/app_templates/index.pt</code> to change
+      this page.</p>
+      <img src="http://localhost/fanstatic/phenomine.web/evencaveman.jpg" />
+    </body>
+    </html>

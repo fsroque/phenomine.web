@@ -1,0 +1,130 @@
+<div class="span-6 prepend-3 logo">
+  <img  id='logo' tal:attributes="src static/phenomine.png" width="175px" height="87px" alt="logo" />
+</div>
+<div class='span-10 append-5 last'>
+  <form action="." tal:attributes="action request/URL" method="post" class="edit-form" enctype="multipart/form-data">
+
+      <!--<legend><span class="omim">OMIM</span><span class="ine">ine</span></legend>-->
+      <div class='span-10'>
+        <div class='span-6'>
+        <!--<label for="form.phenotypes">List of phenotypes:</label><br>-->
+        <textarea placeholder="Input phenotypes" tal:content="view/getPhenotypeInput" name="form.phenotypes" id="form.phenotypes" class="text">
+        </textarea>
+        </div>
+        
+        <div class='span-4 last mining'>
+          <div class='span-4 last'>
+            <label for="form.search">Use text-mining?</label>
+          </div>
+          <div class='span-4 last'>
+            <select id="form.search" name="form.search" size="1" tal:define="current view/getSearchInput">
+              <option tal:attributes="selected python:'no'==current" value="no">no</option>
+              <option tal:attributes="selected python:'partial'==current" value="partial">partial</option>
+              <option tal:attributes="selected python:'full'==current" value="full">full</option>
+            </select>
+          </div>
+        </div>
+        
+
+        <div class="span-4 append-6 last">
+          <div id="actionsView">
+            <span class="actionButtons">
+              <input tal:replace="structure python: view.actions['form.actions.searchHome'].render()" />
+              <input tal:replace="structure python: view.actions['form.actions.clearHome'].render()" />
+            </span>
+          </div>
+      </div>
+  </div>
+  <hr class="space">
+  </form>
+</div>
+
+<div class="clear" />
+
+<div class="span-12 prepend-6 append-6 last form-status" tal:define="status view/status" tal:condition="status">
+  <div class="error text">
+    <div tal:condition="view/errors" tal:replace="structure python: view.errors[0]" />
+  </div>
+</div>
+
+<div tal:condition="not: view/hasResult" tal:on-error="structure string:<div class='span-12 prepend-6 append-6 last error text'><strong>Phenomine</strong> is down for maintenance, please check back later.</div><script type='text/javascript'>disableButtons()</script>">
+<div class="span-20 append-2 prepend-2">
+  <script type='text/javascript'>enableButtons()</script>
+  <div id="about-and-instructions" class="box span-20 last">
+    <h2>About and Instructions</h2>
+    <p>Phenomine is a search engine for the Online Mendelian Inheritance in Man&reg; database. It 
+      provides extra functionality to extract genes related to several phenotypes at once, or to extend 
+      gene-phenotype associations by taking advantage of free-text search in the phenotype text.
+    </p>
+
+    <p>The database was last updated on <strong tal:content="view/getLastUpdate"></strong> with the latest
+      OMIM&reg; and Ensembl content. Gene to phenotype association is derived from Ensembl.
+    </p>
+
+    <p><strong>Instructions:</strong><br />
+      <dl>
+       <dd>Input phenotypes in the box above, one per line.</dd><br />
+       <dd>If you choose not to use text-mining, the server will only output genes which are directly 
+       associated with a given phenotype in morbidmap. Phenotypes are matched only by name.</dd><br />
+       <dd>Choosing 'partial' text-mining will extend the search to include the phenotype description text.
+       Any occurrence of the phenotype in an OMIM entry, will return the gene related to the latter. In
+       this way you can retrieve genes that are indirectly associated to a phenotype. Only phenotypes for
+       which the molecular basis is known ('#' prefix in OMIM) are included.</dd><br />
+       <dd>If you select 'full' text-mining, the partial search is extended to include phenotypes or loci for
+       which the underlying molecular basis is not known ('%' prefix in OMIM).</dd>
+      </dl>
+  </div>
+</div>
+</div>
+
+<div tal:condition="view/hasResult">
+  <div tal:condition="python: len(view.getResult())>0">
+    <table id="results" class="small tablesorter">
+      <caption tal:content="structure view/tableHeader" />
+      <thead>
+      <tr tal:condition="python: view.getSearchInput() == 'no'">
+        <th class="span-4 prepend-2">Matched phenotype</th>
+        <th class="span-9">Matched morbid</th>
+        <th class="span-3">Ensembl Gene Id</th>
+        <th class="span-2">MIM Id</th>
+        <th class="span-2 append-2 last">HGNC symbol</th>
+      </tr>
+      <tr tal:condition="python: view.getSearchInput() != 'no'">
+        <th class="span-3">Matched phenotype</th>
+        <th class="span-7">Matched morbid</th>
+        <th class="span-3">Ensembl Gene Id</th>
+        <th class="span-2">MIM Id</th>
+        <th class="span-2">HGNC symbol</th>
+        <th class="span-7 last">Match context</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="gene" tal:repeat="result view/getResult" tal:condition="python: view.getSearchInput() == 'no'">  
+        <td class="span-4 prepend-2 phenotype" tal:content="result/phenotype">Phenotype</td>
+        <td class="span-9 morbid" tal:content="structure python: view.returnMorbid(result['matched_morbid'])">Morbid</td>
+        <td class="span-3 ensembl" tal:content="structure python: '<a href=\'http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=%s\' target=\'_blank\'>%s</a>' % (result['ensembl'],result['ensembl'])">Ensembl</td>
+        <td class="span-2 mim" tal:content="structure python: '<a href=\'http://www.omim.org/entry/%s\' target=\'_blank\'>%s</a>' % (result['mim'],result['mim'])">Mim</td>
+        <td class="span-2 append-2 last hgnc" tal:content="result/hgnc">HGNC</td>
+      </tr>
+      <tr class="gene" tal:repeat="result view/getResult" tal:condition="python: view.getSearchInput() != 'no'">  
+        <td class="span-3 phenotype" tal:content="result/phenotype">Phenotype</td>
+        <td class="span-7 morbid" tal:content="structure python: view.returnMorbid(result['matched_morbid'])">Morbid</td>
+        <td class="span-3 ensembl" tal:content="structure python: '<a href=\'http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=%s\' target=\'_blank\'>%s</a>' % (result['ensembl'],result['ensembl'])">Ensembl</td>
+        <td class="span-2 mim" tal:content="structure python: '<a href=\'http://www.omim.org/entry/%s\' target=\'_blank\'>%s</a>' % (result['mim'],result['mim'])">Mim</td>
+        <td class="span-2 hgnc" tal:content="result/hgnc">HGNC</td>
+        <td class="span-7 last context" tal:content="structure result/match">Match</td>
+      </tr>
+      </tbody>
+    </table> 
+  </div>
+  <div class="span-12 prepend-6 append-6 last" tal:condition="python: len(view.getResult())==0">
+    <div class="notice">
+      No results found
+    </div>
+  </div>
+</div> 
+
+
+  
+
+
