@@ -36,6 +36,7 @@ class PhenomineWebService(object):
     implements(IPhenomineWebService)
 
     def __init__(self):
+        # import pdb;pdb.set_trace()
         self.client = suds.client.Client(config.wsdl, cache=None)
         
     def _runService(self,phenotype_list,search_option):

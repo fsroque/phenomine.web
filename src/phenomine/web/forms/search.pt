@@ -1,5 +1,5 @@
 <div class="span-6 prepend-3 logo">
-  <img  id='logo' tal:attributes="src static/phenomine.png" width="175px" height="87px" alt="logo" />
+  <img  id='logo' tal:attributes="src static/mining.png" width="175px" height="87px" alt="logo" />
 </div>
 <div class='span-10 append-5 last'>
   <form action="." tal:attributes="action request/URL" method="post" class="edit-form" enctype="multipart/form-data">
@@ -48,6 +48,7 @@
 </div>
 
 <div tal:condition="not: view/hasResult" tal:on-error="structure string:<div class='span-12 prepend-6 append-6 last error text'><strong>Phenomine</strong> is down for maintenance, please check back later.</div><script type='text/javascript'>disableButtons()</script>">
+
 <div class="span-20 append-2 prepend-2">
   <script type='text/javascript'>enableButtons()</script>
   <div id="about-and-instructions" class="box span-20 last">
