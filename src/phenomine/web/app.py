@@ -126,7 +126,7 @@ class SearchForm(grok.Form):
     def getLastUpdate(self):
         # searchPhenomine = PhenomineWebService()
         last_update = self.searchPhenomine.getVersion()
-        m = re.search('Phenomine updated: (\d\d\d\d-\d\d-\d\d)', last_update)
+        m = re.search('OMIM updated: (\d\d\d\d-\d\d-\d\d)', last_update)
         return time.strftime('%d %B %Y',time.strptime(m.group(1),'%Y-%m-%d'))
         
     def returnMorbid(self, morbid):
