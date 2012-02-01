@@ -23,8 +23,9 @@ First public release of phenomine.web, a web frontent built in a grok installati
 
 ## Running phenomine.web
 * Modify the file etc/phenomine.web.ini.in to point to the appropriate location of the phenomine Web Service [WSDL][wsdl]
-* Run python bootstrp.py to download necessary packages and create the appropriate folder structure
-* Run bin/past serve /parts/etc/deploy.ini
+* Run python bootstrap.py to create the buildout executable
+* Run ./bin/buildout to download necessary packages and create the appropriate folder structure
+* Run ./bin/paster serve /parts/etc/deploy.ini
 * That's it!
 
 ## License
