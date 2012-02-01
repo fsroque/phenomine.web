@@ -23,10 +23,11 @@ def handle(obj, event):
     resource.favicon.need()
     resource.style.need()
     jquery.need()
-    tablesorter.need()
+    # tablesorter.need()
     resource.javascript.need()
-    resource.tablesorter.need()
+    # resource.tablesorter.need()
     resource.framework_js.need()
+    resource.elastic_textarea.need()
 
 class Phenominemacro(grok.View):
     # Macropage
