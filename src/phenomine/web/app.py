@@ -19,16 +19,14 @@ class Phenomine(grok.Application, grok.Container):
 
 @grok.subscribe(Phenomine, IBeforeTraverseEvent)
 def handle(obj, event):
-    resource.blueprint_screen.need()
+    resource.framework.need()
     resource.favicon.need()
     resource.style.need()
     jquery.need()
     tablesorter.need()
     resource.javascript.need()
     resource.tablesorter.need()
-    # add fixes for IE in css
-    if event.request.get('HTTP_USER_AGENT').find('MSIE') > -1:
-        resource.blueprint_ie.need()
+    resource.framework_js.need()
 
 class Phenominemacro(grok.View):
     # Macropage
