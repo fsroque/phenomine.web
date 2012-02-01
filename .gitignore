@@ -1,0 +1,10 @@
+.DS_Store
+*.pyc
+.AppleDouble
+!.gitignore
+.installed.cfg
+bin/
+develop-eggs/
+parts/
+src/phenomine.web.egg-info/
+var/
