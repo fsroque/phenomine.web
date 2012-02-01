@@ -1,4 +1,4 @@
-# phenomine.web - A web interface for the [phenomine][phenomine] Web Service using [Grok]grok
+# phenomine.web - A web interface for the phenomine Web Service using grok
 
 ## Latest updates
 * [2012-02-01] - Initial import
