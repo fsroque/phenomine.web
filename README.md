@@ -21,6 +21,12 @@ First public release of phenomine.web, a web frontent built in a grok installati
 * Python 2.6 (2.7 will work just as well)
 * Access to the phenomine Web Service
 
+## Running phenomine.web
+* Modify the file etc/phenomine.web.ini.in to point to the appropriate location of the phenomine Web Service [WSDL][wsdl]
+* Run python bootstrp.py to download necessary packages and create the appropriate folder structure
+* Run bin/past serve /parts/etc/deploy.ini
+* That's it!
+
 ## License
 
 phenomine.web is released under the [MIT License][mit]. 
@@ -30,3 +36,4 @@ phenomine.web is released under the [MIT License][mit].
 [grok]:http://grok.zope.org/
 [bp]:http://blueprintcss.org/
 [bs]:http://twitter.github.com/bootstrap/
+[wsdl]:http://www.w3.org/TR/wsdl
