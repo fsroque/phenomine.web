@@ -11,17 +11,10 @@ line-height:15px;
 float:right;
 }
 
-span.match {
-    font-weight: bold;
-}
-
 .logo #logo {
-    display: block;
     margin-top: 2em;
-	margin-bottom: 2em;
 }
 
 #form {
-	margin-top: 2em;
 	margin-bottom: 2em;
 }
