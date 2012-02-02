@@ -17,6 +17,11 @@ function enableButtons()
 	$("#form\\.search").removeClass('uneditable-input');
 	
 }
+function formError()
+{
+	$("#form\\.control\\.group").addClass('error');
+	$("#form\\.control\\.group\\.controls").append('<p class="help-block">You must specify a list of phenotypes.</p>');
+}
 $(document).ready(function() 
     { 
 		$("#form\\.actions\\.searchHome").addClass('btn').addClass('btn-success');

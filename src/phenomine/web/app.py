@@ -25,7 +25,6 @@ def handle(obj, event):
     jquery.need()
     tablesorter.need()
     resource.javascript.need()
-    # resource.tablesorter.need()
     resource.framework_js.need()
     resource.elastic_textarea.need()
 

@@ -7,9 +7,11 @@
 	<div class="row">
 	<div class='span12 pagination-centered' id="form">
 	  <form action="." tal:attributes="action request/URL" method="post" class="edit-form form-inline" enctype="multipart/form-data">
-		<div class="control-group">
+		<div class="control-group" id="form.control.group">
+			<div class="controls" id="form.control.group.controls">
 		    <textarea placeholder="Input phenotypes" tal:content="view/getPhenotypeInput" name="form.phenotypes" id="form.phenotypes" class="span3" rows="1">
 		    </textarea>
+			</div>
  	    </div>
 		
 		<div class="control-group">
@@ -52,21 +54,22 @@
 
 
 
-<div class="row" tal:define="status view/status" tal:condition="status">
+<div tal:define="status view/status" tal:condition="status" tal:replace="structure python:'<script type=\'text/javascript\'>formError()</script>'" />
+	<!--
 	<div class="span5 offset3 alert alert-error form-status">
 	  <div class="error text">
 	    <div tal:condition="view/errors" tal:replace="structure python: view.errors[0]" />
 	  </div>
 	</div>
-</div>
+	-->
 
 <div class="row">
 	
-	<div tal:condition="not: view/hasResult" tal:on-error="structure string:<div class='span6 offset3 alert '><strong>phenomine</strong> is down for maintenance, please check back later.</div><script type='text/javascript'>disableButtons()</script>">
+	<div class="span12" tal:condition="not: view/hasResult" tal:on-error="structure string:<div class='span5 offset3 alert pagination-centered'><strong>phenomine</strong> is down for maintenance, please check back later.</div><script type='text/javascript'>disableButtons()</script>">
 
-		<div class="span10 offset1">
+		<div class="span9 offset1 well">
 		  <script type='text/javascript'>enableButtons()</script>
-		  <div id="about-and-instructions" class="span9 well">
+		  <div id="about-and-instructions">
 		    <h2>About and Instructions</h2>
 		    <p>Phenomine is a search engine for the Online Mendelian Inheritance in Man&reg; database. It 
 		      provides extra functionality to extract genes related to several phenotypes at once, or to extend 
@@ -92,7 +95,6 @@
 		  </div>
 		</div>
 	</div>
-
 	<div tal:condition="view/hasResult">
 	  <div tal:condition="python: len(view.getResult())>0" class="span12">
 	    <table id="results" class="table tablesorter table-striped table-bordered table-condensed">
@@ -133,8 +135,11 @@
 	      </tbody>
 	    </table> 
 	  </div>
-	  <div class="span3 offset4 alert" tal:condition="python: len(view.getResult())==0">
-	      <strong>Warning:</strong> No results found
+	  
+	  <div tal:condition="python: len(view.getResult())==0">
+			  <div class="span3 offset4 alert pagination-centered">
+		      <strong>Warning:</strong> No results found.
+			  </div>
 	  </div>
 	</div> 
 </div>
