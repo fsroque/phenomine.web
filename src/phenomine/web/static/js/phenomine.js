@@ -27,7 +27,27 @@ $(document).ready(function()
 		$("#form\\.actions\\.searchHome").addClass('btn').addClass('btn-success');
 		$("#form\\.actions\\.clearHome").addClass('btn');
 		$("#form\\.phenotypes").elastic();
-        $("#results").tablesorter({headers: { 5: { sorter: false}}}); 
+		var dontSort = [];
+		                $('#results thead th').each( function () {
+		                    if ( $(this).hasClass( 'no_sort' )) {
+		                        dontSort.push( { "bSortable": false } );
+		                    } else {
+		                        dontSort.push( null );
+		                    }
+		                } );
+		$("#results").dataTable( {
+			"bPaginate": false,
+			"bFilter": false,
+			"aoColumns": dontSort,
+			"oLanguage": {
+				      "sInfo": "Found <strong>_TOTAL_</strong> matches"
+				    }, 
+		    "sDom": "<'row'<'span6'i>r>t<'row'<'span6'p>>"
+		    } );
+		$.extend( $.fn.dataTableExt.oStdClasses, {
+		    "sWrapper": "dataTables_wrapper form-inline"
+		} );
+        // $("#results").tablesorter({headers: { 5: { sorter: false}}}); 
         $("tr.gene").each(function(i, tr) {
             var match = $("td.context", tr).html();
             if(match !== null) {

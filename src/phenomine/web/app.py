@@ -25,6 +25,7 @@ def handle(obj, event):
     resource.javascript.need()
     resource.framework_js.need()
     resource.elastic_textarea.need()
+    resource.datatables_js.need()
 
 class Phenominemacro(grok.View):
     # Macropage

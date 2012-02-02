@@ -14,6 +14,7 @@
 			<metal:block define-slot="content">
 			</metal:block>
 		</div>
+		<br>
 		<div id="footer" class="row">
 			<div class="span12 pagination-centered">
 			  <p>
