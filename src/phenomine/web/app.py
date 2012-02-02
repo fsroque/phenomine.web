@@ -77,7 +77,6 @@ class SearchForm(grok.Form):
         
     def doSearch(self):
         (self.result['phenomine'],self.result['report']) = self.searchPhenomine.getGeneList(self.filters['phenotypes'], self.filters['search'])
-        
 
     @grok.action('Clear', validator=None, name="clearHome")
     def clear(self, **data):
@@ -118,7 +117,8 @@ class SearchForm(grok.Form):
     
     def getReport(self):
         if self.hasResult:
-            return self.result['report']
+            return 'http://dummy'
+            #return self.result['report']
         return ''
     
     def getLastUpdate(self):
@@ -137,5 +137,5 @@ class SearchForm(grok.Form):
     
     def tableHeader(self):
         header = '<span><em>Found <strong>%d</strong> matches.</em></span>' % len(self.getResult())
-        header = header + '<a href="%s"><i class="icon-download-alt"></i>Download report</a>' % self.getReport()
+        #header = header + '<a href="%s"><i class="icon-download-alt"></i>Download report</a>' % self.getReport()
         return header

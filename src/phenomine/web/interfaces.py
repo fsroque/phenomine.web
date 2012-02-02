@@ -65,4 +65,4 @@ class PhenomineWebService(object):
                 else:
                     res['match'] = ''
                 results.append(res)
-        return (results, web_results.outputFileURI)
+        return (results, web_results.report)

@@ -53,21 +53,14 @@
 </div>
 
 
-
+<!-- Handle error in form -->
 <div tal:define="status view/status" tal:condition="status" tal:replace="structure python:'<script type=\'text/javascript\'>formError()</script>'" />
-	<!--
-	<div class="span5 offset3 alert alert-error form-status">
-	  <div class="error text">
-	    <div tal:condition="view/errors" tal:replace="structure python: view.errors[0]" />
-	  </div>
-	</div>
-	-->
 
+<!-- bottom row, instructions + results -->
 <div class="row">
-	
 	<div class="span12" tal:condition="not: view/hasResult" tal:on-error="structure string:<div class='span5 offset3 alert pagination-centered'><strong>phenomine</strong> is down for maintenance, please check back later.</div><script type='text/javascript'>disableButtons()</script>">
 
-		<div class="span9 offset1 well">
+	<div class="span9 offset1 well">
 		  <script type='text/javascript'>enableButtons()</script>
 		  <div id="about-and-instructions">
 		    <h2>About and Instructions</h2>
@@ -94,9 +87,9 @@
 		      </dl>
 		  </div>
 		</div>
-	</div>
+		</div>
 	<div tal:condition="view/hasResult">
-	  <div tal:condition="python: len(view.getResult())>0" class="span12">
+	  <div tal:condition="python: len(view.getResult())>0" tal:on-error="structure string:<p>foo</p>" class="span12">
 	    <table id="results" class="table tablesorter table-striped table-bordered table-condensed">
 	      <caption tal:content="structure view/tableHeader" />
 	      <thead>
@@ -142,6 +135,7 @@
 			  </div>
 	  </div>
 	</div> 
+	
 </div>
 
   
