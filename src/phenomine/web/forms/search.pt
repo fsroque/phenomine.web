@@ -1,8 +1,11 @@
 <div class="row">
-	<div class="span3 offset2 logo">
+	<div class="row">
+	<div class="span12 logo pagination-centered">
 	  <img  id='logo' tal:attributes="src static/mining.png" width="175px" height="87px" alt="logo" />
 	</div>
-	<div class='span4' id="form">
+	</div>
+	<div class="row">
+	<div class='span12 pagination-centered' id="form">
 	  <form action="." tal:attributes="action request/URL" method="post" class="edit-form form-inline" enctype="multipart/form-data">
 		<div class="control-group">
 		    <textarea placeholder="Input phenotypes" tal:content="view/getPhenotypeInput" name="form.phenotypes" id="form.phenotypes" class="span3" rows="1">
@@ -19,30 +22,31 @@
         </select>
 		
 		-->
-		<div class="controls" id="form.search" name="form.search" tal:define="current view/getSearchInput">
+		<div class="controls" id="form.search" tal:define="current view/getSearchInput">
 			<label class="control-label"><strong>Textmining:</strong></label>
 			<label class="radio">
-				<input type="radio" name="optionsSearch" value="no" checked>
+				<input type="radio" name="form.search" value="no" checked>
 				<span class="muted">None</span>
 			</label>
 			<label class="radio">
-				<input type="radio" name="optionsSearch" tal:attributes="checked python:'partial'==current" value="partial">
+				<input type="radio" name="form.search" tal:attributes="checked python:'partial'==current" value="partial">
 				<span class="muted">Partial</span>
 			</label>
 			<label class="radio">
-				<input type="radio" name="optionsSearch" tal:attributes="checked python:'full'==current" value="full">
+				<input type="radio" name="form.search" tal:attributes="checked python:'full'==current" value="full">
 				<span class="muted">Full</span>
 			</label>
 		</div>
 		
 		</div>
-		<div class="control-group row">
-		<div class="span3 pagination-centered">
+		<div class="row">
+		<div class="control-group span12 pagination-centered">
           <input tal:replace="structure python: view.actions['form.actions.searchHome'].render()" />
           <input tal:replace="structure python: view.actions['form.actions.clearHome'].render()" />
-        </div>
+		</div>
 		</div>
 	  </form>
+	</div>
 	</div>
 </div>
 
@@ -124,7 +128,7 @@
 	        <td class="ensembl" tal:content="structure python: '<a href=\'http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=%s\' target=\'_blank\'>%s</a>' % (result['ensembl'],result['ensembl'])">Ensembl</td>
 	        <td class="mim" tal:content="structure python: '<a href=\'http://www.omim.org/entry/%s\' target=\'_blank\'>%s</a>' % (result['mim'],result['mim'])">Mim</td>
 	        <td class="hgnc" tal:content="result/hgnc">HGNC</td>
-	        <td class="last context" tal:content="structure result/match">Match</td>
+	        <td class="last muted context" tal:content="structure result/match">Match</td>
 	      </tr>
 	      </tbody>
 	    </table> 
