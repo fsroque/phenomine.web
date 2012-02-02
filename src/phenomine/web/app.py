@@ -136,6 +136,6 @@ class SearchForm(grok.Form):
             return morbid
     
     def tableHeader(self):
-        header = '<em>Found <strong>%d</strong> matches.</em>' % len(self.getResult())
-        header = header + '<a href="%s">Download report</a>' % self.getReport()
+        header = '<span><em>Found <strong>%d</strong> matches.</em></span>' % len(self.getResult())
+        header = header + '<a href="%s"><i class="icon-download-alt"></i>Download report</a>' % self.getReport()
         return header
