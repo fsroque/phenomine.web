@@ -1,4 +1,5 @@
 textarea {
+	height: 19px;
 	max-height: 95px;
     overflow: auto;
 }
