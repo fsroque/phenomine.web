@@ -91,7 +91,7 @@
 	<div tal:condition="view/hasResult">
 	  <div tal:condition="python: len(view.getResult())>0" tal:on-error="structure string:<p>foo</p>" class="span12">
 	    <table id="results" class="table tablesorter table-striped table-bordered table-condensed">
-	      <caption tal:content="structure view/tableHeader" />
+	      <!--<caption tal:content="structure view/tableHeader" />-->
 	      <thead>
 	      <tr tal:condition="python: view.getSearchInput() == 'no'">
 	        <th>Matched phenotype</th>
@@ -106,7 +106,7 @@
 	        <th>Ensembl Gene Id</th>
 	        <th>MIM Id</th>
 	        <th>HGNC symbol</th>
-	        <th>Match context</th>
+	        <th class="no_sort">Match context</th>
 	      </tr>
 	      </thead>
 	      <tbody>

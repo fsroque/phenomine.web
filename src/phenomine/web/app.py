@@ -10,7 +10,6 @@ from phenomine.web import resource
 from phenomine.web.interfaces import ISearch, PhenomineWebService
 
 from js.jquery import jquery
-from js.jquery_tablesorter import tablesorter
 
 
 
@@ -23,10 +22,10 @@ def handle(obj, event):
     resource.favicon.need()
     resource.style.need()
     jquery.need()
-    tablesorter.need()
     resource.javascript.need()
     resource.framework_js.need()
     resource.elastic_textarea.need()
+    resource.datatables_js.need()
 
 class Phenominemacro(grok.View):
     # Macropage
