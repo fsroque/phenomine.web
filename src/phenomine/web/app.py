@@ -10,7 +10,6 @@ from phenomine.web import resource
 from phenomine.web.interfaces import ISearch, PhenomineWebService
 
 from js.jquery import jquery
-from js.jquery_tablesorter import tablesorter
 
 
 
@@ -23,7 +22,6 @@ def handle(obj, event):
     resource.favicon.need()
     resource.style.need()
     jquery.need()
-    tablesorter.need()
     resource.javascript.need()
     resource.framework_js.need()
     resource.elastic_textarea.need()
@@ -118,7 +116,8 @@ class SearchForm(grok.Form):
     
     def getReport(self):
         if self.hasResult:
-            return self.result['report']
+            return 'dummy'
+            # return self.result['report']
         return ''
     
     def getLastUpdate(self):
@@ -137,5 +136,5 @@ class SearchForm(grok.Form):
     
     def tableHeader(self):
         header = '<span><em>Found <strong>%d</strong> matches.</em></span>' % len(self.getResult())
-        header = header + '<a href="%s"><i class="icon-download-alt"></i>Download report</a>' % self.getReport()
+        #header = header + '<a href="%s"><i class="icon-download-alt"></i>Download report</a>' % self.getReport()
         return header
