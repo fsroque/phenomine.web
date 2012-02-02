@@ -55,13 +55,6 @@
 
 
 <div tal:define="status view/status" tal:condition="status" tal:replace="structure python:'<script type=\'text/javascript\'>formError()</script>'" />
-	<!--
-	<div class="span5 offset3 alert alert-error form-status">
-	  <div class="error text">
-	    <div tal:condition="view/errors" tal:replace="structure python: view.errors[0]" />
-	  </div>
-	</div>
-	-->
 
 <div class="row">
 	
@@ -98,7 +91,7 @@
 	<div tal:condition="view/hasResult">
 	  <div tal:condition="python: len(view.getResult())>0" class="span12">
 	    <table id="results" class="table tablesorter table-striped table-bordered table-condensed">
-	      <caption tal:content="structure view/tableHeader" />
+	      <!--<caption tal:content="structure view/tableHeader" />-->
 	      <thead>
 	      <tr tal:condition="python: view.getSearchInput() == 'no'">
 	        <th>Matched phenotype</th>
@@ -113,7 +106,7 @@
 	        <th>Ensembl Gene Id</th>
 	        <th>MIM Id</th>
 	        <th>HGNC symbol</th>
-	        <th>Match context</th>
+	        <th class="no_sort">Match context</th>
 	      </tr>
 	      </thead>
 	      <tbody>
