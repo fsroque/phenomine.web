@@ -95,7 +95,7 @@
 
 	<div tal:condition="view/hasResult">
 	  <div tal:condition="python: len(view.getResult())>0" class="span12">
-	    <table id="results" class="table table-striped table-bordered table-condensed">
+	    <table id="results" class="table tablesorter table-striped table-bordered table-condensed">
 	      <caption tal:content="structure view/tableHeader" />
 	      <thead>
 	      <tr tal:condition="python: view.getSearchInput() == 'no'">
