@@ -28,7 +28,6 @@ setup(name='phenomine.web',
                         # Add extra requirements here
                         'suds',
                         'js.jquery',
-                        'js.jquery_tablesorter',
                         ],
       entry_points={
           'fanstatic.libraries': [
