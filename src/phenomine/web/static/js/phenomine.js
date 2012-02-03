@@ -62,9 +62,8 @@ $(document).ready(function()
 											"sFileName": "phenomine.xls",
 											"sToolTip": "Save as Excel file"
 										},
-										
 									],
-
+						"sRowSelect": "multi",
 			        },
 		    "sDom": "<'row'<'span6'i><'span6'T>r>t<'row'<'span6'p>>"
 		    } );
