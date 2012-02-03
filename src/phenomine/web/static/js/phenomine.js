@@ -42,12 +42,35 @@ $(document).ready(function()
 			"oLanguage": {
 				      "sInfo": "Found <strong>_TOTAL_</strong> matches"
 				    }, 
-		    "sDom": "<'row'<'span6'i>r>t<'row'<'span6'p>>"
+			"oTableTools": {
+						"sSwfPath": "http://localhost/~chico/copy_cvs_xls.swf",
+						"aButtons": [
+										{
+											"sExtends": "copy",
+											"bSelectedOnly": true,
+											"sToolTip": "Copy selected rows"
+										},
+										{
+											"sExtends": "csv",
+											"bSelectedOnly": true,
+											"sFileName": "phenomine.csv",
+											"sToolTip": "Save as CSV"
+										},
+										{
+											"sExtends": "xls",
+											"bSelectedOnly": true,
+											"sFileName": "phenomine.xls",
+											"sToolTip": "Save as Excel file"
+										},
+										
+									],
+
+			        },
+		    "sDom": "<'row'<'span6'i><'span6'T>r>t<'row'<'span6'p>>"
 		    } );
 		$.extend( $.fn.dataTableExt.oStdClasses, {
 		    "sWrapper": "dataTables_wrapper form-inline"
 		} );
-        // $("#results").tablesorter({headers: { 5: { sorter: false}}}); 
         $("tr.gene").each(function(i, tr) {
             var match = $("td.context", tr).html();
             if(match !== null) {

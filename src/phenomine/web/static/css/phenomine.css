@@ -11,14 +11,9 @@ padding-left:20px;
 line-height:15px;
 float:right;
 }
-
-.logo #logo {
-    margin-top: 2em;
-}
-
-#form {
-	margin-bottom: 2em;
-}
+.logo #logo { margin-top: 2em; }
+#form {	margin-bottom: 2em; }
+.dataTables_info { margin-bottom:0.5em; }
 
 table.table thead .sorting,
 table.table thead .sorting_asc,
