@@ -15,15 +15,6 @@
  	    </div>
 		
 		<div class="control-group">
-		<!--	
-        <label class="control-label">Use textmining?</label>
-        <select class="span1" id="form.search" name="form.search" size="1" tal:define="current view/getSearchInput">
-          <option tal:attributes="selected python:'no'==current" value="no">no</option>
-          <option tal:attributes="selected python:'partial'==current" value="partial">partial</option>
-          <option tal:attributes="selected python:'full'==current" value="full">full</option>
-        </select>
-		
-		-->
 		<div class="controls" id="form.search" tal:define="current view/getSearchInput">
 			<label class="control-label"><strong>Textmining:</strong></label>
 			<label class="radio">
