@@ -153,36 +153,36 @@ table.DTTT_selectable tbody tr {
 }
 
 tr.DTTT_selected.odd {
-	background-color: #9FAFD1;
+	font-weight: bold;
 }
 
 tr.DTTT_selected.odd td.sorting_1 {
-	background-color: #9FAFD1;
+	font-weight: bold;
 }
 
 tr.DTTT_selected.odd td.sorting_2 {
-	background-color: #9FAFD1;
+	font-weight: bold;
 }
 
 tr.DTTT_selected.odd td.sorting_3 {
-	background-color: #9FAFD1;
+	font-weight: bold;
 }
 
 
 tr.DTTT_selected.even {
-	background-color: #B0BED9;
+	font-weight: bold;
 }
 
 tr.DTTT_selected.even td.sorting_1 {
-	background-color: #B0BED9;
+	font-weight: bold;
 }
 
 tr.DTTT_selected.even td.sorting_2 {
-	background-color: #B0BED9;
+	font-weight: bold;
 }
 
 tr.DTTT_selected.even td.sorting_3 {
-	background-color: #B0BED9;
+	font-weight: bold;
 }
 
 
