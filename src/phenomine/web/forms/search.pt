@@ -13,7 +13,6 @@
 		    </textarea>
 			</div>
  	    </div>
-		
 		<div class="control-group">
 		<div class="controls" id="form.search" tal:define="current view/getSearchInput">
 			<label class="control-label"><strong>Textmining:</strong></label>
@@ -30,7 +29,6 @@
 				<span class="muted">Full</span>
 			</label>
 		</div>
-		
 		</div>
 		<div class="row">
 		<div class="control-group span12 pagination-centered">
@@ -42,11 +40,8 @@
 	</div>
 	</div>
 </div>
-
-
 <!-- Handle error in form -->
 <div tal:define="status view/status" tal:condition="status" tal:replace="structure python:'<script type=\'text/javascript\'>formError()</script>'" />
-
 <!-- bottom row, instructions + results -->
 <div class="row">
 	<div class="span12" tal:condition="not: view/hasResult" tal:on-error="structure string:<div class='span5 offset3 alert pagination-centered'><strong>phenomine</strong> is down for maintenance, please check back later.</div><script type='text/javascript'>disableButtons()</script>">
@@ -119,16 +114,10 @@
 	      </tbody>
 	    </table> 
 	  </div>
-	  
 	  <div tal:condition="python: len(view.getResult())==0">
 			  <div class="span3 offset4 alert pagination-centered">
 		      <strong>Warning:</strong> No results found.
 			  </div>
 	  </div>
 	</div> 
-	
 </div>
-
-  
-
-
