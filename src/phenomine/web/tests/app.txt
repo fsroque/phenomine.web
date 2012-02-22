@@ -25,18 +25,3 @@ Check some basic information about the page you visit:
 
     >>> browser.url
     'http://localhost/app'
-
-    >>> print browser.contents
-    <html>
-    <head>
-    <link rel="stylesheet" type="text/css" href="http://localhost/fanstatic/phenomine.web/style.css" />
-    <base href="http://localhost/app/@@index" />
-    </head>
-    <body>
-      <h1>Congratulations!</h1>
-      <p>Your Grok application is up and running.
-      Edit <code>phenomine/web/app_templates/index.pt</code> to change
-      this page.</p>
-      <img src="http://localhost/fanstatic/phenomine.web/evencaveman.jpg" />
-    </body>
-    </html>

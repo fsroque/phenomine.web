@@ -1,6 +1,4 @@
-<metal:block define-macro="standard">
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-
+<metal:block define-macro="standard"><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<title>Phenomine</title>
@@ -20,7 +18,7 @@
 			  <p>
 				<strong>OMIM&reg;</strong> and <strong>Online Mendelian Inheritance in Man&reg;</strong> are registered trademarks of the Johns Hopkins University.
 	      	  <br />
-	      				&copy; 2011 
+	      				&copy; 2012 
 	      				<strong>
 	      				     <a href="http://cbu.uib.no" target="new">CBU</a>,
 	      				     <a href="http://www.computing.uni.no" target="new">Uni Computing</a>, 
@@ -30,9 +28,7 @@
 	      		 </p>
 			</div>
 		</div>
-	
 	</div>
 </body>
 </html>
-
 </metal:block>
