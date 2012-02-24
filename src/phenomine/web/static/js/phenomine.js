@@ -22,11 +22,37 @@ function formError()
 	$("#form\\.control\\.group").addClass('error');
 	$("#form\\.control\\.group\\.controls").append('<p class="help-block">You must specify a list of phenotypes.</p>');
 }
+var shared = {
+   style: {
+      tip: true,
+	  classes: 'ui-tooltip-green ui-tooltip-shadow ui-tooltip-rounded'
+   }
+};
 $(document).ready(function() 
     { 
+		//style buttons
 		$("#form\\.actions\\.searchHome").addClass('btn').addClass('btn-success');
 		$("#form\\.actions\\.clearHome").addClass('btn');
+		//initiate elastic input field
 		$("#form\\.phenotypes").elastic();
+		//tooltips
+		$('#form\\.phenotypes').qtip( $.extend({}, shared, { 
+		   content: 'Input phenotypes in the box, one per line.',
+		   position: { my: 'right center', at: 'left center' }
+		}));
+		$('#form\\.search\\.no').qtip( $.extend({}, shared, { 
+		   content: 'If text mining is disabled, the server will only output genes which are directly associated with a given phenotype in morbidmap. Phenotypes are matched only by name.',
+		   position: { my: 'top center', at: 'bottom center' }
+		}));
+		$('#form\\.search\\.partial').qtip( $.extend({}, shared, { 
+		   content: 'The search will aditionally include the phenotype description text. Any exact match for the phenotype in an OMIM entry will return the associated genes. Only phenotypes for which the molecular basis is known (\'#\' prefix in OMIM) are included.',
+		   position: { my: 'top center', at: 'bottom center' }
+		}));
+		$('#form\\.search\\.full').qtip( $.extend({}, shared, { 
+		   content: 'This option will extend the partial search to include phenotypes or loci for which the underlying molecular basis is not known (\'%\' prefix in OMIM).',
+		   position: { my: 'top center', at: 'bottom center' }
+		}));
+		// datatables
 		var dontSort = [];
 		                $('#results thead th').each( function () {
 		                    if ( $(this).hasClass( 'no_sort' )) {
@@ -70,6 +96,7 @@ $(document).ready(function()
 		$.extend( $.fn.dataTableExt.oStdClasses, {
 		    "sWrapper": "dataTables_wrapper form-inline"
 		} );
+		// highlight matching text snippets
         $("tr.gene").each(function(i, tr) {
             var match = $("td.context", tr).html();
             if(match !== null) {

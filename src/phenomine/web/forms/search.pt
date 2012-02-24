@@ -15,17 +15,17 @@
  	    </div>
 		<div class="control-group">
 		<div class="controls" id="form.search" tal:define="current view/getSearchInput">
-			<label class="control-label"><strong>Textmining:</strong></label>
+			<label class="control-label"><strong>Text mining:</strong></label>
 			<label class="radio">
-				<input type="radio" name="form.search" value="no" checked>
+				<input id="form.search.no" type="radio" name="form.search" value="no" checked>
 				<span class="muted">None</span>
 			</label>
 			<label class="radio">
-				<input type="radio" name="form.search" tal:attributes="checked python:'partial'==current" value="partial">
+				<input id="form.search.partial" type="radio" name="form.search" tal:attributes="checked python:'partial'==current" value="partial">
 				<span class="muted">Partial</span>
 			</label>
 			<label class="radio">
-				<input type="radio" name="form.search" tal:attributes="checked python:'full'==current" value="full">
+				<input id="form.search.full" type="radio" name="form.search" tal:attributes="checked python:'full'==current" value="full">
 				<span class="muted">Full</span>
 			</label>
 		</div>
@@ -49,7 +49,7 @@
 	<div class="span9 offset1 well">
 		  <script type='text/javascript'>enableButtons()</script>
 		  <div id="about-and-instructions">
-		    <h2>About and Instructions</h2>
+		    <h2>About</h2>
 		    <p>Phenomine is a search engine for the Online Mendelian Inheritance in Man&reg; database. It 
 		      provides extra functionality to extract genes related to several phenotypes at once, or to extend 
 		      gene-phenotype associations by taking advantage of free-text search in the phenotype text.
@@ -58,19 +58,6 @@
 		    <p>The database was last updated on <strong tal:content="view/getLastUpdate"></strong> with the latest
 		      OMIM&reg; and Ensembl content. Gene to phenotype association is derived from Ensembl.
 		    </p>
-
-		    <p><strong>Instructions:</strong><br />
-		      <dl>
-		       <dd>Input phenotypes in the box above, one per line.</dd><br />
-		       <dd>If you choose not to use text-mining, the server will only output genes which are directly 
-		       associated with a given phenotype in morbidmap. Phenotypes are matched only by name.</dd><br />
-		       <dd>Choosing 'partial' text-mining will extend the search to include the phenotype description text.
-		       Any occurrence of the phenotype in an OMIM entry, will return the gene related to the latter. In
-		       this way you can retrieve genes that are indirectly associated to a phenotype. Only phenotypes for
-		       which the molecular basis is known ('#' prefix in OMIM) are included.</dd><br />
-		       <dd>If you select 'full' text-mining, the partial search is extended to include phenotypes or loci
-			for which the underlying molecular basis is not known ('%' prefix in OMIM).</dd>
-		      </dl>
 		  </div>
 		</div>
 		</div>

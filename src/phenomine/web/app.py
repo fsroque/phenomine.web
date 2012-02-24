@@ -29,6 +29,8 @@ def handle(obj, event):
     resource.tabletools_js.need()
     resource.tabletools_css.need()
     resource.tabletools_js_zeroclipboard.need()
+    resource.qtip_js.need()
+    resource.qtip_css.need()
 
 class Phenominemacro(grok.View):
     # Macropage
