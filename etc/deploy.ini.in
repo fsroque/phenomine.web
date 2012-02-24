@@ -23,6 +23,7 @@ versioning = true
 minified = true
 rollup = true
 recompute_hashes = false
+bundle= true
 
 [app:grok]
 use = egg:grokcore.startup

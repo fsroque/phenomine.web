@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="row">
 	<div class="span12 logo pagination-centered">
-	  <img  id='logo' tal:attributes="src static/mining.png" width="175px" height="87px" alt="logo" />
+	  <img  id='logo' tal:attributes="src static/images/mining.png" width="175px" height="87px" alt="logo" />
 	</div>
 	</div>
 	<div class="row">
@@ -116,7 +116,7 @@
 	  </div>
 	  <div tal:condition="python: len(view.getResult())==0">
 			  <div class="span3 offset4 alert pagination-centered">
-		      <strong>Warning:</strong> No results found.
+		      No results found.
 			  </div>
 	  </div>
 	</div> 
