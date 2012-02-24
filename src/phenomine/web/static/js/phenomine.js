@@ -4,8 +4,8 @@ function disableButtons()
 	$(".button").addClass('disabled');
 	$("#form\\.phenotypes").attr('disabled','disabled')
 	$("#form\\.phenotypes").addClass('disabled');
-	$("#form\\.search").attr('disabled','disabled')
-	$("#form\\.search").addClass('disabled');
+	$('#form\\.search input').attr('disabled','disabled')
+	$('#form\\.search label').addClass('muted')
 }
 function enableButtons()
 {
@@ -13,8 +13,8 @@ function enableButtons()
 	$(".button").removeClass('disabled');
 	$("#form\\.phenotypes").removeAttr('disabled');
 	$("#form\\.phenotypes").removeClass('uneditable-input');
-	$("#form\\.search").removeAttr('disabled');
-	$("#form\\.search").removeClass('uneditable-input');
+	$('#form\\.search input').removeAttr('disabled')
+	$('#form\\.search label').removeClass('muted')
 	
 }
 function formError()
@@ -43,7 +43,7 @@ $(document).ready(function()
 				      "sInfo": "Found <strong>_TOTAL_</strong> matches"
 				    }, 
 			"oTableTools": {
-						"sSwfPath": "http://localhost/~chico/copy_cvs_xls.swf",
+						"sSwfPath": "http://www.ii.uib.no/~fro061/webservices/copy_cvs_xls.swf",
 						"aButtons": [
 										{
 											"sExtends": "copy",
