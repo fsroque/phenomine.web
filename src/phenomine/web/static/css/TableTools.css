@@ -155,6 +155,7 @@ table.DTTT_selectable tbody tr {
 tr.DTTT_selected.odd {
 	font-weight: bold;
 }
+	
 
 tr.DTTT_selected.odd td.sorting_1 {
 	font-weight: bold;
