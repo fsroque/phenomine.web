@@ -90,6 +90,13 @@ $(document).ready(function()
 										},
 									],
 						"sRowSelect": "multi",
+						"fnRowSelected": function ( node ) {
+                			$(node).find('td:eq(0)').prepend('<i class="icon-ok"></i>');
+            			},
+						"fnRowDeselected": function ( node ) {
+                			$(node).find('td:eq(0)').find('i').remove();
+            			},
+						
 			        },
 		    "sDom": "<'row'<'span6'i><'span6'T>r>t<'row'<'span6'p>>"
 		    } );
