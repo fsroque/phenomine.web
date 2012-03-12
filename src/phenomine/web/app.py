@@ -67,7 +67,7 @@ def validateForm(form, action, data):
 class SearchForm(grok.Form):
     grok.context(Phenomine)
     """Front page search form"""
-    template = grok.PageTemplateFile('forms/search.pt')
+    template = grok.PageTemplateFile('templates/search.pt')
     form_fields = grok.AutoFields(ISearch)
     searchPhenomine = PhenomineWebService()
     
