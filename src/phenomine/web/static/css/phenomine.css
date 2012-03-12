@@ -34,9 +34,49 @@ table.table thead .sorting_desc_disabled { background: url('../images/sort_desc_
 .tabs-below .nav-tabs {
   border-top: 0px;
 }
-
-.nav-tabs ul {
-	margin: 0px auto;
+.nav-tabs > li, .nav-pills > li {
+    float:none;
+    display:inline-block;
+    *display:inline; /* ie7 fix */
+     zoom:1; /* hasLayout ie7 trigger */
 }
+
+.nav-tabs {
+    text-align:center;
+}
+.nav-tabs > li > a {
+  padding-top: 9px;
+  padding-bottom: 9px;
+  border: 1px solid transparent;
+  -webkit-border-radius: 4px 4px 0 0;
+  -moz-border-radius: 4px 4px 0 0;
+  border-radius: 4px 4px 0 0;
+}
+.nav-tabs > li > a:hover {
+  border-color: #eeeeee #eeeeee #dddddd;
+}
+.nav-tabs > .active > a, .nav-tabs > .active > a:hover {
+  color: #555555;
+  background-color: #ffffff;
+  border: 0px;
+}
+.tabs-below .nav-tabs > li > a:hover {
+  border-bottom-color: transparent;
+  border-top-color: transparent;
+}
+.tabs-below .nav-tabs .active > a, .tabs-below .nav-tabs .active > a:hover {
+  border-color: transparent;
+}
+.tabs-below .nav-tabs > li > a {
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+
+
+
+
+
 
 
