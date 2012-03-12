@@ -98,7 +98,7 @@ $(document).ready(function()
             			},
 						
 			        },
-		    "sDom": "<'row'<'span6'i><'span6'T>r>t<'row'<'span6'p>>"
+		    "sDom": "<'row'<'span6'i><'span6'T>r>t<'row'<'span6'p>>",
 		    } );
 		$.extend( $.fn.dataTableExt.oStdClasses, {
 		    "sWrapper": "dataTables_wrapper form-inline"
