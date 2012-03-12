@@ -33,6 +33,10 @@ $(document).ready(function()
 		//style buttons
 		$("#form\\.actions\\.searchHome").addClass('btn').addClass('btn-success');
 		$("#form\\.actions\\.clearHome").addClass('btn');
+		$('#form\\.actions\\.searchHome').button('reset');
+		$('#form\\.actions\\.searchHome').click( function() {
+			$('#form\\.actions\\.searchHome').button('loading');
+		})
 		//initiate elastic input field
 		$("#form\\.phenotypes").elastic();
 		//tooltips
