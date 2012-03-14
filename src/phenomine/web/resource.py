@@ -15,4 +15,4 @@ qtip_css =  Resource(library, 'css/jquery.qtip.css', minified='css/jquery.qtip.m
 qtip_js =  Resource(library, 'js/jquery.qtip.js', minified='js/jquery.qtip.min.js')
 javascript = Resource(library, 'js/phenomine.js', depends=[tabletools_js, elastic_textarea, qtip_js])
 bootstrap_button = Resource(library, 'js/bootstrap-button.js')
-bootstrap_tab = Resource(library, 'js/bootstrap-tab.js')
+bootstrap_dropdown = Resource(library, 'js/bootstrap-dropdown.js')

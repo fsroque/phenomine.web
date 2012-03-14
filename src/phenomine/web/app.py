@@ -32,7 +32,7 @@ def handle(obj, event):
     resource.qtip_js.need()
     resource.qtip_css.need()
     resource.bootstrap_button.need()
-    resource.bootstrap_tab.need()
+    resource.bootstrap_dropdown.need()
 
 class Phenominemacro(grok.View):
     # Macropage
