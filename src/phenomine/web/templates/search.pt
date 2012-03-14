@@ -43,7 +43,7 @@
 <!-- Handle error in form -->
 <div tal:define="status view/status" tal:condition="status" tal:replace="structure python:'<script type=\'text/javascript\'>formError()</script>'" />
 <!-- bottom row, instructions + results -->
-<div class="row tabbable tabs-below">
+<div class="row">
 	<div id="aboutPlaceholder" class="span12" tal:condition="not: view/hasResult" tal:on-error="structure string:<div class='span5 offset3 alert pagination-centered'><strong>phenomine</strong> is down for maintenance, please check back later.</div><script type='text/javascript'>disableButtons()</script>">
 
 	<div class="span9 offset1 well">
@@ -107,11 +107,6 @@
 			  </div>
 	  </div>
 	</div> 
-  <ul class="nav nav-tabs">
-      <li class="active"><a href="#1" data-toggle="tab">About</a></li>
-      <li><a href="#2" data-toggle="tab">Help</a></li>
-	  <li><a href="#3" data-toggle="tab">Test</a></li>
-   </ul>
 	
 </div>
 
