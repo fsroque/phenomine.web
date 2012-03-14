@@ -10,3 +10,4 @@ src/phenomine.web.egg-info/
 var/
 eggs/
 etc/phenomine.web.ini.in
+etc/site.zcml.in
